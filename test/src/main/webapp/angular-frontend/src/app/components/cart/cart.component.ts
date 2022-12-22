@@ -28,8 +28,8 @@ export class CartComponent implements OnInit {
   getCartTotal(cart: any): number {
     let sum = 0;
 
-    for(let product of this.cartProducts){
-      sum += product.price;
+    for(let product of cart){
+      sum += product.price * product.amount;
     }
 
     return sum;
