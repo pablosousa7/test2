@@ -29,13 +29,9 @@ public class OrderController {
        return ResponseEntity.ok().body(orderRepository.findById(id));
     }
 
-    @PostMapping("/order")
-    public ResponseEntity<?> saveOrder(@RequestBody Product product, UriComponentsBuilder builder){
-        Order order = new Order();
-        order.setProduct(product);
-
+    @PostMapping(value="/order")
+    public ResponseEntity<Order> saveOrder(@RequestBody Order order){
         orderRepository.save(order);
-        URI uri = builder.path("/api/order/{id}").buildAndExpand(order.getId()).toUri();
-        return ResponseEntity.created(uri).body(order);
+        return ResponseEntity.ok().body(order);
     }
 }
