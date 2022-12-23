@@ -41,7 +41,7 @@ export class CartService {
     return this.cartProducts;
   }
 
-  submitOrder(order: any): Observable<any> {
+  submitOrder(order: any) {
     return this.http.post("http://localhost:8080/api/order", order);
   }
 }
