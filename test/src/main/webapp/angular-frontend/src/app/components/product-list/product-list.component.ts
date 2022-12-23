@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((rest: any) => {
-      this.products = rest;
+      this.products = rest.body;
     });
   }
 
