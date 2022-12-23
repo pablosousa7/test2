@@ -54,7 +54,9 @@ export class CartComponent implements OnInit {
     order.name = this.customerName;
     order.price = this.total;
 
-    //TODO: Submit order - call the service
+    this.cartService.submitOrder(order).subscribe(rest => {
+      console.log(rest);
+    });
     this.cartService.clearCart();
     this.cartProducts = [];
     this.router.navigate(['/confirmation', { customerName: this.customerName, total: this.total }]);
