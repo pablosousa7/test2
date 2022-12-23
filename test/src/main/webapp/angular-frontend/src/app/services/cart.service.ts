@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '../models/Order';
 
@@ -8,7 +8,13 @@ import { Order } from '../models/Order';
 })
 export class CartService {
   cartProducts: any[] = [];
-
+  
+  private headerOptions: any = {
+    observe: 'response',
+    headers: new HttpHeaders({
+      Authorization: 'Basic dWRhY2l0eTpwYXNzd29yZA=='
+    })
+};
   constructor(private http: HttpClient) { }
 
   getCartProducts() {
@@ -41,7 +47,7 @@ export class CartService {
     return this.cartProducts;
   }
 
-  submitOrder(order: any) {
-    return this.http.post("http://localhost:8080/api/order", order);
+  submitOrder(order: any){
+    return this.http.post("http://localhost:8080/api/order", order, this.headerOptions);
   }
 }
