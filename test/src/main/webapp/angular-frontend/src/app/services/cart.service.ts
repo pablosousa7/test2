@@ -16,12 +16,16 @@ export class CartService {
   }
 
   addToCart(product: any, amount: any) {
-   this.cartProducts.push(product); 
-   
-    for(let existingProduct of this.cartProducts){
-      existingProduct.amount += parseInt(amount);
+
+    let index = this.cartProducts.map(product => product.name).indexOf(product.name);
+
+    if (index != -1) {
+      for (let existingProduct of this.cartProducts) {
+        existingProduct.amount += parseInt(amount);
+      }
+    } else {
+      this.cartProducts.push(product);
     }
-    
 
     alert('Added to cart!');
   }
