@@ -12,7 +12,7 @@ import com.udacity.store.model.Product;
 import com.udacity.store.repository.OrderRepository;
 
 @RestController
-@RequestMapping("orders/")
+@RequestMapping("api/")
 @CrossOrigin(origins = "*")
 public class OrderController {
 
