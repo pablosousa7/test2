@@ -15,5 +15,6 @@ public class Order implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Product product;
+    private String name;
+    private String price;
 }
